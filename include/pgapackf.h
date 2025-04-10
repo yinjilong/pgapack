@@ -239,7 +239,7 @@ c *** SET USER FUNCTION
       parameter ( PGA_USERFUNCTION_STOPCOND =           9)
       integer PGA_USERFUNCTION_ENDOFGEN
       parameter ( PGA_USERFUNCTION_ENDOFGEN =          10)
-      c *** Yes, this is the same as DIFFERENCE below      
+c *** Yes, this is the same as DIFFERENCE below      
       integer PGA_USERFUNCTION_GEN_DISTANCE
       parameter ( PGA_USERFUNCTION_GEN_DISTANCE =      11)      
       integer PGA_USERFUNCTION_GEN_DIFFERENCE
