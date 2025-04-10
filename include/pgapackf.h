@@ -44,11 +44,6 @@ c *** BOOLEANS &  FLAGS
       parameter ( PGA_WARNING =               2)
 
 
-      integer PGA_UNINITIALIZED_INT
-      parameter ( PGA_UNINITIALIZED_INT =    -3827)
-      double precision PGA_UNINITIALIZED_DOUBLE
-      parameter ( PGA_UNINITIALIZED_DOUBLE = -968.3827)
-
 c *** TEMP & POP REFERENT CONSTANTS
       integer PGA_TEMP1
       parameter ( PGA_TEMP1 =                -1138)
@@ -59,6 +54,13 @@ c *** TEMP & POP REFERENT CONSTANTS
       parameter ( PGA_OLDPOP =               -6728)
       integer PGA_NEWPOP
       parameter ( PGA_NEWPOP =               -8376)
+
+      
+      integer PGA_UNINITIALIZED_INT
+      parameter ( PGA_UNINITIALIZED_INT =    -3827)
+      double precision PGA_UNINITIALIZED_DOUBLE
+      parameter ( PGA_UNINITIALIZED_DOUBLE = -968.3827)
+
 
 c *** DEBUG LEVELS
       integer PGA_DEBUG_ENTERED
@@ -99,7 +101,8 @@ c *** CROSSOVER
       parameter ( PGA_CROSSOVER_UNIFORM =   3)
       integer PGA_CROSSOVER_SBX
       parameter ( PGA_CROSSOVER_SBX =       4)
-
+      integer PGA_CROSSOVER_EDGE
+      parameter ( PGA_CROSSOVER_EDGE =       5)
 c *** SELECTION
       integer PGA_SELECT_PROPORTIONAL
       parameter ( PGA_SELECT_PROPORTIONAL = 1)
@@ -141,6 +144,17 @@ c *** MUTATION
       parameter ( PGA_MUTATION_PERMUTE  =  5)
       integer PGA_MUTATION_DE
       parameter ( PGA_MUTATION_DE       =  6)
+      integer PGA_MUTATION_POLY
+      parameter ( PGA_MUTATION_POLY       =  7)
+
+      integer PGA_MIX_MUTATE_OR_CROSS
+      parameter ( PGA_MIX_MUTATE_OR_CROSS       =  1)
+      integer PGA_MIX_MUTATE_AND_CROSS
+      parameter ( PGA_MIX_MUTATE_AND_CROSS       =  2)      
+      integer PGA_MIX_MUTATE_ONLY
+      parameter ( PGA_MIX_MUTATE_ONLY       =  3)      
+      integer PGA_MIX_TRADITIONAL
+      parameter ( PGA_MIX_TRADITIONAL       =  4)            
 
 c *** Differential Evolution Variant
       integer PGA_DE_VARIANT_RAND
@@ -177,8 +191,10 @@ c *** REPORT OPTIONS
       parameter ( PGA_REPORT_ONLINE =   1 )
       integer PGA_REPORT_OFFLINE
       parameter ( PGA_REPORT_OFFLINE =  2 )
+      integer PGA_REPORT_GENE_DISTANCE
+      parameter ( PGA_REPORT_GENE_DISTANCE =  4 )
       integer PGA_REPORT_HAMMING
-      parameter ( PGA_REPORT_HAMMING =  4 )
+      parameter ( PGA_REPORT_HAMMING =  PGA_REPORT_GENE_DISTANCE )      
       integer PGA_REPORT_STRING
       parameter ( PGA_REPORT_STRING =   8 )
       integer PGA_REPORT_WORST
@@ -187,6 +203,10 @@ c *** REPORT OPTIONS
       parameter ( PGA_REPORT_AVERAGE = 32 )
 
 c *** RANDOMIZER
+      integer PGA_RINIT_PERCENT
+      parameter ( PGA_RINIT_PERCENT = 1 )      
+      integer PGA_RINIT_RANGE
+      parameter ( PGA_RINIT_RANGE = 2 )
       integer PGA_IINIT_PERMUTE
       parameter ( PGA_IINIT_PERMUTE =             1)
       integer PGA_IINIT_RANGE
@@ -219,11 +239,11 @@ c *** SET USER FUNCTION
       parameter ( PGA_USERFUNCTION_STOPCOND =           9)
       integer PGA_USERFUNCTION_ENDOFGEN
       parameter ( PGA_USERFUNCTION_ENDOFGEN =          10)
+      c *** Yes, this is the same as DIFFERENCE below      
+      integer PGA_USERFUNCTION_GEN_DISTANCE
+      parameter ( PGA_USERFUNCTION_GEN_DISTANCE =      11)      
       integer PGA_USERFUNCTION_GEN_DIFFERENCE
       parameter ( PGA_USERFUNCTION_GEN_DIFFERENCE =    11)
-c *** Yes, this is the same as DIFFERENCE above
-      integer PGA_USERFUNCTION_GEN_DISTANCE
-      parameter ( PGA_USERFUNCTION_GEN_DISTANCE =      11)
       integer PGA_USERFUNCTION_PRE_EVAL
       parameter ( PGA_USERFUNCTION_PRE_EVAL =          12)
       integer PGA_USERFUNCTION_HASH
@@ -236,7 +256,8 @@ c *** Yes, this is the same as DIFFERENCE above
       parameter ( PGA_USERFUNCTION_SERIALIZE_FREE =    16)
       integer PGA_USERFUNCTION_CHROM_FREE
       parameter ( PGA_USERFUNCTION_CHROM_FREE =        17)
-
+      integer PGA_NUM_USERFUNCTIONS
+      parameter ( PGA_NUM_USERFUNCTIONS =        17)
 c *** TAGS
       integer PGA_COMM_STRINGTOEVAL
       parameter ( PGA_COMM_STRINGTOEVAL =              1)
@@ -244,6 +265,14 @@ c *** TAGS
       parameter ( PGA_COMM_EVALOFSTRING =              2)
       integer PGA_COMM_DONEWITHEVALS
       parameter ( PGA_COMM_DONEWITHEVALS =             3)
+      integer PGA_COMM_SERIALIZE_SIZE
+      parameter ( PGA_COMM_SERIALIZE_SIZE =             4)      
+      integer PGA_MPI_HEADER_ELEMENTS
+      parameter ( PGA_MPI_HEADER_ELEMENTS =             7)            
+      double precision PGA_EPSILON_EXPONENT_MIN
+      parameter ( PGA_EPSILON_EXPONENT_MIN =           3.0)                  
+      double precision PGA_EPSILON_EXPONENT_MAX
+      parameter ( PGA_EPSILON_EXPONENT_MAX =          10.0)                        
 c *** binary
       integer PGAGetBinaryAllele
       external PGAGetBinaryAllele
